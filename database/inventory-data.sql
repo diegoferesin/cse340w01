@@ -1,5 +1,3 @@
--- Data for table `inventory`
-
 INSERT INTO public.inventory (
     inv_make,
     inv_model,
