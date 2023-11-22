@@ -1,25 +1,16 @@
-CREATE TABLE IF NOT EXISTS account (
-    account_id SERIAL PRIMARY KEY,
-    account_firstname VARCHAR(255) NOT NULL,
-    account_lastname VARCHAR(255) NOT NULL,
-    account_email VARCHAR(255) NOT NULL UNIQUE,
-    account_password TEXT NOT NULL,
-    account_type VARCHAR(50) NOT NULL DEFAULT 'Client'
-);
-
 -- 1) Insert the following new record to the account table 
 -- Note: The account_id and account_type fields should handle their own values and do not need to be part of this query.
 -- Tony, Stark, tony@starkent.com, Iam1ronM@n
-INSERT INTO account (account_firstname, account_lastname, account_email, account_password)
+INSERT INTO public.account (account_firstname, account_lastname, account_email, account_password)
 VALUES ('Tony', 'Stark', 'tony@starkent.com', 'Iam1ronM@n');
 
 -- 2) Modify the Tony Stark record to change the account_type to "Admin".
-UPDATE account
+UPDATE public.account
 SET account_type = 'Admin'
 WHERE account_id = 1;
 
 -- 3) Delete the Tony Stark record from the database
-DELETE FROM account WHERE account_id = 1;
+DELETE FROM public.account WHERE account_id = 1;
 
 -- 4) Modify the "GM Hummer" record to read "a huge interior" rather than "small interiors" using a single query. 
 -- Explore the PostgreSQL Replace function Do NOT retype the entire description as part of the query.. 
@@ -46,7 +37,3 @@ SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/')
 
 UPDATE inventory
 SET inv_thumbnail = REPLACE(inv_image, '/images/', '/images/')
--- 7) When done with the 6th query, copy and paste it into the assignment 2 file. In addition to this, add the 6th query to the 
--- bottom of the file you created to rebuild your database. Make sure it is the last thing to run when that file is complete. 
--- By the end you should have two files - one with the 6 queries from Task 1, and the second with all the queries to rebuild 
--- your database, along with the 6th query from Task 1. 
