@@ -2,10 +2,10 @@
  * This server.js file is the primary file of the 
  * application. It is used to control the project.
  *******************************************/
+const express = require("express")
 /* ***********************
  * Require Statements
  *************************/
-const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
 const app = express()
@@ -24,6 +24,7 @@ app.set("layout", "./layouts/layout")
 /* ***********************
  * Routes
  *************************/
+// Index Route
 app.use(require("./routes/static"))
 // app.get("/", function (req, res) {
 //   res.render("index", { title: "Home" })
