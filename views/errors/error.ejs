@@ -1,0 +1,9 @@
+<!-- ***************************
+ *  The Content Heading Assignment 3 Error handling
+ * ************************** -->
+<% if (title) { %>
+<!-- If a title is provided, display an h1 heading with the title -->
+<h1><%= title %></h1>
+<h2 class="errorMessage"><%- message %></h2>
+<% } else { // If no title is provided, redirect to the home page
+res.redirect('/'); } %>
