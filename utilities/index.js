@@ -54,12 +54,33 @@ Util.buildClassificationGrid = async function (data) {
     return grid
 }
 
+Util.buildItemGrid = function (itemDetails) {
+    let grid = '<div id="item-display">';
+
+    if (itemDetails) {
+        grid += '<div class="img-details">';
+        grid += '<img src="' + itemDetails.inv_image + '" alt="Image of ' + itemDetails.inv_make + ' ' + itemDetails.inv_model + ' on CSE Motors">';
+        grid += '</div>';
+        grid += '<div class="details">';
+        grid += '<h2>' + itemDetails.inv_make + ' ' + itemDetails.inv_model + '</h2>';
+        grid += '<p><strong>Price: $' + new Intl.NumberFormat('en-US').format(itemDetails.inv_price) + '</strong></p>';
+        grid += '<p><strong>Description:</strong> ' + itemDetails.inv_description + '</p>';
+        grid += '<p><strong>Color:</strong> ' + itemDetails.inv_color + '</p>';
+        grid += '<p><strong>Mileage:</strong> ' + new Intl.NumberFormat('en-US').format(itemDetails.inv_miles) + ' miles</p>';
+        grid += '</div>';
+    } else {
+        grid += '<p class="notice">Sorry, no details could be found for this inventory item.</p>';
+    }
+
+    grid += '</div>';
+    return grid;
+};
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
  * General Error Handling
  **************************************** */
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
-
 
 module.exports = Util
