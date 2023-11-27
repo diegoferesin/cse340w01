@@ -11,7 +11,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
         const classification_id = req.params.classificationId
         const data = await invModel.getInventoryByClassificationId(classification_id)
 
-        if (!data || data.length == 0) {
+        if (!data || data.length === 0) {
             return res
                 .status(404)
                 .send("Inventory data not found for the specified classification")
